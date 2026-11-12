@@ -29,20 +29,19 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            textBox1 = new TextBox();
-            comboBox1 = new ComboBox();
+            txtSearch = new TextBox();
             dataGridView1 = new DataGridView();
             dataGridView2 = new DataGridView();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            txtEng = new TextBox();
+            txtMon = new TextBox();
+            txtRus = new TextBox();
+            btnAdd = new Button();
+            btnUpdate = new Button();
+            btnDelete = new Button();
+            btnClear = new Button();
             button5 = new Button();
             label5 = new Label();
             label6 = new Label();
@@ -53,27 +52,19 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(25, 15);
+            label1.Location = new Point(3, 15);
             label1.Name = "label1";
             label1.Size = new Size(35, 15);
             label1.TabIndex = 0;
             label1.Text = "Хайх:";
             // 
-            // textBox1
+            // txtSearch
             // 
-            textBox1.Location = new Point(66, 12);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(408, 23);
-            textBox1.TabIndex = 1;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Бүгд", "Англи", "Монгол", "Орос" });
-            comboBox1.Location = new Point(516, 12);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 2;
+            txtSearch.Location = new Point(44, 12);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(352, 23);
+            txtSearch.TabIndex = 1;
+            txtSearch.TextChanged += txtSearch_TextChanged_1;
             // 
             // dataGridView1
             // 
@@ -82,13 +73,14 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(329, 273);
             dataGridView1.TabIndex = 3;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Location = new Point(397, 58);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(240, 273);
+            dataGridView2.Size = new Size(184, 273);
             dataGridView2.TabIndex = 4;
             // 
             // label2
@@ -117,62 +109,69 @@
             label4.TabIndex = 7;
             label4.Text = "Орос";
             // 
-            // textBox2
+            // txtEng
             // 
-            textBox2.Location = new Point(66, 356);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 8;
+            txtEng.Location = new Point(66, 356);
+            txtEng.Name = "txtEng";
+            txtEng.Size = new Size(100, 23);
+            txtEng.TabIndex = 8;
+            txtEng.TextChanged += txtEng_TextChanged;
             // 
-            // textBox3
+            // txtMon
             // 
-            textBox3.Location = new Point(253, 356);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 9;
+            txtMon.Location = new Point(253, 356);
+            txtMon.Name = "txtMon";
+            txtMon.Size = new Size(100, 23);
+            txtMon.TabIndex = 9;
+            txtMon.TextChanged += txtMon_TextChanged;
             // 
-            // textBox4
+            // txtRus
             // 
-            textBox4.Location = new Point(449, 356);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 10;
+            txtRus.Location = new Point(449, 356);
+            txtRus.Name = "txtRus";
+            txtRus.Size = new Size(100, 23);
+            txtRus.TabIndex = 10;
+            txtRus.TextChanged += txtRus_TextChanged;
             // 
-            // button1
+            // btnAdd
             // 
-            button1.Location = new Point(19, 400);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 11;
-            button1.Text = "Нэмэх";
-            button1.UseVisualStyleBackColor = true;
+            btnAdd.Location = new Point(19, 400);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(75, 23);
+            btnAdd.TabIndex = 11;
+            btnAdd.Text = "Нэмэх";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click_1;
             // 
-            // button2
+            // btnUpdate
             // 
-            button2.Location = new Point(100, 400);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 12;
-            button2.Text = "Засах";
-            button2.UseVisualStyleBackColor = true;
+            btnUpdate.Location = new Point(100, 400);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(75, 23);
+            btnUpdate.TabIndex = 12;
+            btnUpdate.Text = "Засах";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click_1;
             // 
-            // button3
+            // btnDelete
             // 
-            button3.Location = new Point(181, 400);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 13;
-            button3.Text = "Устгах";
-            button3.UseVisualStyleBackColor = true;
+            btnDelete.Location = new Point(181, 400);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(75, 23);
+            btnDelete.TabIndex = 13;
+            btnDelete.Text = "Устгах";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click_1;
             // 
-            // button4
+            // btnClear
             // 
-            button4.Location = new Point(262, 400);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 23);
-            button4.TabIndex = 14;
-            button4.Text = "Цэвэрлэх ";
-            button4.UseVisualStyleBackColor = true;
+            btnClear.Location = new Point(262, 400);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(75, 23);
+            btnClear.TabIndex = 14;
+            btnClear.Text = "Цэвэрлэх ";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click_1;
             // 
             // button5
             // 
@@ -182,11 +181,12 @@
             button5.TabIndex = 15;
             button5.Text = "санах";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(480, 15);
+            label5.Location = new Point(403, 15);
             label5.Name = "label5";
             label5.Size = new Size(30, 15);
             label5.TabIndex = 16;
@@ -205,24 +205,23 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(661, 450);
+            ClientSize = new Size(601, 450);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
+            Controls.Add(btnClear);
+            Controls.Add(btnDelete);
+            Controls.Add(btnUpdate);
+            Controls.Add(btnAdd);
+            Controls.Add(txtRus);
+            Controls.Add(txtMon);
+            Controls.Add(txtEng);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(dataGridView2);
             Controls.Add(dataGridView1);
-            Controls.Add(comboBox1);
-            Controls.Add(textBox1);
+            Controls.Add(txtSearch);
             Controls.Add(label1);
             Name = "Form1";
             Text = "Гурван хэлний толь бичиг";
@@ -236,20 +235,19 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
-        private ComboBox comboBox1;
+        private TextBox txtSearch;
         private DataGridView dataGridView1;
         private DataGridView dataGridView2;
         private Label label2;
         private Label label3;
         private Label label4;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
+        private TextBox txtEng;
+        private TextBox txtMon;
+        private TextBox txtRus;
+        private Button btnAdd;
+        private Button btnUpdate;
+        private Button btnDelete;
+        private Button btnClear;
         private Button button5;
         private Label label5;
         private Label label6;
